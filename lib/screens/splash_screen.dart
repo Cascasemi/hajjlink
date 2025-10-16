@@ -65,10 +65,10 @@ class _SplashScreenState extends State<SplashScreen>
     
     await Future.delayed(const Duration(milliseconds: 3000));
     _fadeController.forward().then((_) {
-      // Navigate to home screen
+      // Navigate to onboarding screen
       Navigator.pushReplacement(
         context, 
-        MaterialPageRoute(builder: (context) => const HomeScreen())
+        MaterialPageRoute(builder: (context) => const OnboardingScreen())
       );
     });
   }
