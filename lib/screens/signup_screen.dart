@@ -210,7 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Create Account',
+          'Link Your Wristband',
           style: GoogleFonts.playfairDisplay(
             fontSize: 32,
             fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen>
         ),
         const SizedBox(height: 8),
         Text(
-          'Start your spiritual journey with HajjLink',
+          'Connect your smart wristband to begin your pilgrimage',
           style: GoogleFonts.poppins(
             fontSize: 16,
             color: const Color(0xFF6B7280),
@@ -401,7 +401,7 @@ class _SignUpScreenState extends State<SignUpScreen>
           ),
         ),
         child: Text(
-          'Create Account',
+          'Link Wristband',
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
