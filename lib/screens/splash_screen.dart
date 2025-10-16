@@ -724,3 +724,51 @@ class RotatingStarPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
+
+// Custom painter for Islamic corner decorations
+class IslamicCornerPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final strokePaint = Paint()
+      ..color = const Color(0xFFFFD700).withOpacity(0.7)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5;
+
+    final center = Offset(size.width / 2, size.height / 2);
+    
+    // Draw small decorative Islamic motif
+    final path = Path();
+    
+    // Create a small Islamic geometric pattern
+    for (int i = 0; i < 4; i++) {
+      final angle = (i * math.pi) / 2;
+      final x = center.dx + math.cos(angle) * 8;
+      final y = center.dy + math.sin(angle) * 8;
+      
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+    path.close();
+    
+    canvas.drawPath(path, strokePaint);
+    
+    // Add small dots at corners
+    for (int i = 0; i < 4; i++) {
+      final angle = (i * math.pi) / 2 + math.pi / 4;
+      final x = center.dx + math.cos(angle) * 6;
+      final y = center.dy + math.sin(angle) * 6;
+      
+      canvas.drawCircle(
+        Offset(x, y), 
+        1.5, 
+        Paint()..color = const Color(0xFFFFD700).withOpacity(0.8)
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
