@@ -178,27 +178,105 @@ class _SplashScreenState extends State<SplashScreen>
           scale: _logoScale.value,
           child: Opacity(
             opacity: _logoOpacity.value,
-            child: Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: const LinearGradient(
-                  colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFFFFD700).withOpacity(0.3),
-                    blurRadius: 20,
-                    spreadRadius: 5,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // Outer Islamic decorative ring
+                Container(
+                  width: 180,
+                  height: 180,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: const Color(0xFFFFD700).withOpacity(0.3),
+                      width: 2,
+                    ),
                   ),
-                ],
-              ),
-              child: const Icon(
-                Icons.location_on,
-                size: 60,
-                color: Colors.white,
-              ),
+                  child: CustomPaint(
+                    painter: IslamicRingPainter(),
+                  ),
+                ),
+                
+                // Middle decorative ring with crescents
+                Container(
+                  width: 150,
+                  height: 150,
+                  child: CustomPaint(
+                    painter: CrescentRingPainter(),
+                  ),
+                ),
+                
+                // Inner golden ring with shadow
+                Container(
+                  width: 130,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFFFFD700).withOpacity(0.4),
+                        blurRadius: 25,
+                        spreadRadius: 5,
+                      ),
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                ),
+                
+                // Logo container
+                Container(
+                  width: 110,
+                  height: 110,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: ClipOval(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Image.asset(
+                        'assets/images/hajjlink-logo.png',
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+                
+                // Rotating Islamic geometric overlay
+                AnimatedBuilder(
+                  animation: _particleController,
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: _particleController.value * 2 * math.pi,
+                      child: Container(
+                        width: 200,
+                        height: 200,
+                        child: CustomPaint(
+                          painter: RotatingStarPainter(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         );
