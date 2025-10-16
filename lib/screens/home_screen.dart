@@ -54,11 +54,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               // Wristband Status Card
               _buildWristbandStatus(),
               
-              // Quick Actions
-              _buildQuickActions(),
-              
               // Digital Wallet Section
               _buildDigitalWallet(),
+              
+              // Quick Actions
+              _buildQuickActions(),
               
               // AI Guidance Section
               _buildAIGuidance(),
