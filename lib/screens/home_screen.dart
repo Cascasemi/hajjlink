@@ -961,7 +961,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           _buildNavItem(0, Icons.home, 'Home'),
           _buildNavItem(1, Icons.map, 'Navigate'),
           _buildNavItem(2, Icons.account_balance_wallet, 'Wallet'),
-          _buildNavItem(3, Icons.psychology, 'Guide'),
+          _buildNavItem(3, Icons.forum, 'Forum'),
           _buildNavItem(4, Icons.person, 'Profile'),
         ],
       ),
