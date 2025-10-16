@@ -66,6 +66,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               // Emergency Section
               _buildEmergencySection(),
               
+              // Community Forum Section
+              _buildCommunityForum(),
+              
               // Recent Activity
               _buildRecentActivity(),
             ],
