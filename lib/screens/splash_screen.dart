@@ -300,21 +300,94 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildTagline() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: AnimatedTextKit(
-        animatedTexts: [
-          TypewriterAnimatedText(
-            'Connecting Pilgrims Worldwide',
-            textStyle: GoogleFonts.poppins(
-              fontSize: 16,
-              color: Colors.white70,
-              letterSpacing: 1,
+    return Column(
+      children: [
+        // Decorative line with Islamic motifs
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildDecorativeDivider(),
+            const SizedBox(width: 20),
+            Container(
+              width: 8,
+              height: 8,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFFFFD700),
+              ),
             ),
-            speed: const Duration(milliseconds: 100),
+            const SizedBox(width: 20),
+            _buildDecorativeDivider(),
+          ],
+        ),
+        
+        const SizedBox(height: 15),
+        
+        // Main tagline
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Connecting Pilgrims Worldwide',
+                textStyle: GoogleFonts.poppins(
+                  fontSize: 16,
+                  color: Colors.white70,
+                  letterSpacing: 1,
+                ),
+                speed: const Duration(milliseconds: 100),
+              ),
+            ],
+            totalRepeatCount: 1,
           ),
-        ],
-        totalRepeatCount: 1,
+        ),
+        
+        const SizedBox(height: 10),
+        
+        // Arabic-inspired subtitle
+        Text(
+          '• رحلة مباركة •',
+          style: GoogleFonts.amiri(
+            fontSize: 14,
+            color: const Color(0xFFFFD700),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        
+        const SizedBox(height: 15),
+        
+        // Bottom decorative line
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildDecorativeDivider(),
+            const SizedBox(width: 15),
+            const Icon(
+              Icons.star,
+              color: Color(0xFFFFD700),
+              size: 12,
+            ),
+            const SizedBox(width: 15),
+            _buildDecorativeDivider(),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDecorativeDivider() {
+    return Container(
+      width: 40,
+      height: 1,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [
+            Colors.transparent,
+            Color(0xFFFFD700),
+            Colors.transparent,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(1),
       ),
     );
   }
@@ -337,25 +410,73 @@ class _SplashScreenState extends State<SplashScreen>
       right: 0,
       child: Column(
         children: [
-          Text(
-            'Powered by Innovation',
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              color: Colors.white54,
-              letterSpacing: 1,
-            ),
+          // Islamic decorative border
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildIslamicCornerDecoration(),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Container(
+                  height: 1,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        const Color(0xFFFFD700).withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              _buildIslamicCornerDecoration(),
+            ],
           ),
-          const SizedBox(height: 5),
+          
+          const SizedBox(height: 15),
+          
           Text(
-            'Blessed Journey Ahead',
+            'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم',
             style: GoogleFonts.amiri(
-              fontSize: 14,
+              fontSize: 16,
               color: const Color(0xFFFFD700),
               fontWeight: FontWeight.w600,
             ),
           ),
+          
+          const SizedBox(height: 8),
+          
+          Text(
+            'Powered by Innovation & Faith',
+            style: GoogleFonts.poppins(
+              fontSize: 11,
+              color: Colors.white54,
+              letterSpacing: 1,
+            ),
+          ),
+          
+          const SizedBox(height: 5),
+          
+          Text(
+            'A Blessed Journey Awaits',
+            style: GoogleFonts.poppins(
+              fontSize: 13,
+              color: const Color(0xFFFFD700),
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5,
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildIslamicCornerDecoration() {
+    return CustomPaint(
+      size: const Size(20, 20),
+      painter: IslamicCornerPainter(),
     );
   }
 }
@@ -553,7 +674,7 @@ class CrescentRingPainter extends CustomPainter {
     path.addOval(Rect.fromCircle(center: const Offset(-2, 0), radius: size));
     path.addOval(Rect.fromCircle(center: const Offset(2, 0), radius: size * 0.8));
     
-    canvas.drawPath(path, paint..blendMode = BlendMode.difference);
+    canvas.drawPath(path, paint);
     canvas.restore();
   }
 
