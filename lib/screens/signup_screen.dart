@@ -12,14 +12,11 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen>
     with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
+  final _wristbandController = TextEditingController();
   final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   
   bool _isPasswordVisible = false;
-  bool _isConfirmPasswordVisible = false;
   bool _agreeToTerms = false;
   
   late AnimationController _fadeController;
@@ -61,11 +58,9 @@ class _SignUpScreenState extends State<SignUpScreen>
   void dispose() {
     _fadeController.dispose();
     _slideController.dispose();
-    _nameController.dispose();
+    _wristbandController.dispose();
     _emailController.dispose();
-    _phoneController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 
