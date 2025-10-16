@@ -468,22 +468,30 @@ class _SignUpScreenState extends State<SignUpScreen>
 
   Widget _buildSignInLink() {
     return Center(
-      child: RichText(
-        text: TextSpan(
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            color: const Color(0xFF6B7280),
-          ),
-          children: [
-            const TextSpan(text: 'Already have an account? '),
-            TextSpan(
-              text: 'Sign In',
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF0F4C75),
-                fontWeight: FontWeight.w600,
-              ),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const SignInScreen()),
+          );
+        },
+        child: RichText(
+          text: TextSpan(
+            style: GoogleFonts.poppins(
+              fontSize: 16,
+              color: const Color(0xFF6B7280),
             ),
-          ],
+            children: [
+              const TextSpan(text: 'Already have an account? '),
+              TextSpan(
+                text: 'Sign In',
+                style: GoogleFonts.poppins(
+                  color: const Color(0xFF0F4C75),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
