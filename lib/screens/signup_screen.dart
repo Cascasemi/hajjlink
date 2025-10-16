@@ -443,7 +443,7 @@ class _SignUpScreenState extends State<SignUpScreen>
               children: [
                 const TextSpan(text: 'I agree to the '),
                 TextSpan(
-                  text: 'Terms of Service',
+                  text: 'HajjLink Terms',
                   style: GoogleFonts.poppins(
                     color: const Color(0xFF0F4C75),
                     fontWeight: FontWeight.w600,
