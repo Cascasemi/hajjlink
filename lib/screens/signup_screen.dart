@@ -236,15 +236,19 @@ class _SignUpScreenState extends State<SignUpScreen>
       key: _formKey,
       child: Column(
         children: [
-          // Full Name
+          // Wristband Code
           _buildTextField(
-            controller: _nameController,
-            label: 'Full Name',
-            hint: 'Enter your full name',
-            icon: Icons.person_outline,
+            controller: _wristbandController,
+            label: 'Wristband Code',
+            hint: 'Enter your wristband code',
+            icon: Icons.watch_outlined,
+            keyboardType: TextInputType.text,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your full name';
+                return 'Please enter your wristband code';
+              }
+              if (value.length < 6) {
+                return 'Wristband code must be at least 6 characters';
               }
               return null;
             },
@@ -272,23 +276,6 @@ class _SignUpScreenState extends State<SignUpScreen>
           
           const SizedBox(height: 20),
           
-          // Phone Number
-          _buildTextField(
-            controller: _phoneController,
-            label: 'Phone Number',
-            hint: 'Enter your phone number',
-            icon: Icons.phone_outlined,
-            keyboardType: TextInputType.phone,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your phone number';
-              }
-              return null;
-            },
-          ),
-          
-          const SizedBox(height: 20),
-          
           // Password
           _buildTextField(
             controller: _passwordController,
@@ -308,32 +295,6 @@ class _SignUpScreenState extends State<SignUpScreen>
               }
               if (value.length < 8) {
                 return 'Password must be at least 8 characters long';
-              }
-              return null;
-            },
-          ),
-          
-          const SizedBox(height: 20),
-          
-          // Confirm Password
-          _buildTextField(
-            controller: _confirmPasswordController,
-            label: 'Confirm Password',
-            hint: 'Confirm your password',
-            icon: Icons.lock_outline,
-            isPassword: true,
-            isPasswordVisible: _isConfirmPasswordVisible,
-            onTogglePassword: () {
-              setState(() {
-                _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-              });
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please confirm your password';
-              }
-              if (value != _passwordController.text) {
-                return 'Passwords do not match';
               }
               return null;
             },
